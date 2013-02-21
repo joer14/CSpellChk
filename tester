@@ -1,0 +1,11 @@
+#!/bin/sh -x
+# $Id: mk,v 1.4 2012-10-25 18:13:13-07 - - $
+#
+# This script takes the names of C source files and compiles them
+# into executable images.  Each source must be a complete program.
+#
+mkdir results
+pspell.perl $*  > results/realoutput1.lis 2>&1
+spellchk $* > results/ourprogram1.lis 2>&1   
+diff results/realoutput1.lis results/ourprogram1.lis
+sdiff results/realoutput1.lis results/ourprogram1.lis
